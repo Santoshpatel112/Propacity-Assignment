@@ -47,6 +47,8 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const buildingRef = useRef<HTMLDivElement>(null);
+  const panelLeftRef = useRef<HTMLDivElement>(null);
+  const panelRightRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
   const enterTlRef = useRef<gsap.core.Timeline | null>(null);
   const isEnteringRef = useRef(false);
@@ -61,6 +63,7 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
         .set(lineRef.current, { height: 60 });
     } else {
       tl.fromTo(buildingRef.current, { opacity: 0, y: "12%", scale: 1.16 }, { opacity: 0.24, y: 0, scale: 1, duration: 2.2, ease: "expo.out" })
+        .fromTo([panelLeftRef.current, panelRightRef.current], { clipPath: "inset(0 50% 0 50%)" }, { clipPath: "inset(0 0% 0 0%)", duration: 1.6, ease: "expo.inOut", stagger: 0.08 }, "-=1.8")
         .fromTo(arrowRef.current, { opacity: 0, y: 12 }, { opacity: 0.8, y: 0, duration: 0.8, ease: "expo.out" }, "-=1.5")
         .fromTo(logoRef.current, { opacity: 0, y: 34, letterSpacing: "0.7em" }, { opacity: 1, y: 0, letterSpacing: "0.4em", duration: 1.5, ease: "expo.out" }, "-=1.1")
         .fromTo(tagRef.current, { opacity: 0, y: 18, clipPath: "inset(0 0 100% 0)" }, { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 1, ease: "expo.out" }, "-=0.9")
@@ -113,6 +116,16 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
     >
       <div ref={buildingRef} className="murec-intro__building" aria-hidden="true">
         <Image src="/images/villa.jpg" alt="" fill sizes="100vw" priority />
+      </div>
+      <div className="murec-intro__panels" aria-hidden="true">
+        <div ref={panelLeftRef} className="murec-intro__panel murec-intro__panel--left">
+          <Image src="/images/villa.jpg" alt="" fill sizes="50vw" priority />
+          <span>ESTATE I</span>
+        </div>
+        <div ref={panelRightRef} className="murec-intro__panel murec-intro__panel--right">
+          <Image src="/images/villa.jpg" alt="" fill sizes="50vw" priority />
+          <span>ESTATE II</span>
+        </div>
       </div>
       <div ref={arrowRef} className="murec-intro__arrow" aria-hidden="true">
         <Arrow down />

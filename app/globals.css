@@ -618,6 +618,54 @@ ul, ol {
   background: linear-gradient(180deg, var(--color-void) 0%, transparent 42%, var(--color-void) 100%), linear-gradient(90deg, var(--color-void) 0%, transparent 35%, transparent 65%, var(--color-void) 100%);
 }
 
+.murec-intro__panels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none;
+  opacity: 0.38;
+  mix-blend-mode: screen;
+}
+
+.murec-intro__panel {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  will-change: clip-path;
+}
+
+.murec-intro__panel img {
+  object-fit: cover;
+  filter: saturate(0.45) contrast(1.08) brightness(0.58);
+}
+
+.murec-intro__panel--left img { object-position: 34% center; }
+.murec-intro__panel--right img { object-position: 66% center; }
+
+.murec-intro__panel span {
+  position: absolute;
+  top: 9%;
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  letter-spacing: 0.28em;
+  color: var(--color-cream);
+  opacity: 0.75;
+}
+
+.murec-intro__panel--left span { left: 11%; }
+.murec-intro__panel--right span { right: 11%; }
+
+.murec-intro__panels::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  bottom: 8%;
+  width: 1px;
+  background: linear-gradient(transparent, rgba(234, 229, 216, 0.55), transparent);
+}
+
 .murec-intro__arrow {
   position: absolute;
   bottom: 13%;
@@ -637,6 +685,29 @@ ul, ol {
   width: 1px;
   height: 42px;
   background: linear-gradient(to top, var(--color-gold), transparent);
+}
+
+.murec-intro__arrow::after {
+  content: "EXPLORE";
+  position: absolute;
+  top: -31px;
+  left: 50%;
+  width: 112px;
+  height: 112px;
+  border: 1px solid rgba(234, 229, 216, 0.3);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-family: var(--font-body);
+  font-size: 0.5rem;
+  letter-spacing: 0.24em;
+  color: var(--color-cream);
+  animation: intro-ring-spin 18s linear infinite;
+}
+
+@keyframes intro-ring-spin {
+  to { transform: translate(-50%, -50%) rotate(270deg); }
 }
 
 @keyframes intro-frame-in {
@@ -705,8 +776,10 @@ ul, ol {
   .murec-intro__logo,
   .murec-intro__tagline,
   .murec-intro__cta,
-  .murec-intro__arrow { transition: none; animation: none; }
+  .murec-intro__arrow,
+  .murec-intro__arrow::after { transition: none; animation: none; }
   .murec-intro__building { opacity: 0.24; transform: none; }
+  .murec-intro__panel { clip-path: inset(0); }
 }
 
 /* ═══════════════════════════════════════════════
@@ -1026,7 +1099,7 @@ ul, ol {
   transform-origin: left;
 }
 
-/* ═══════════════════════════════════════════════
+/* ═══════��═══════════════════════════════════════
    MARQUEE
    ═══════════════════════════════════════════════ */
 
