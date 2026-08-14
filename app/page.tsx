@@ -46,6 +46,8 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
   const tagRef = useRef<HTMLParagraphElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
+  const buildingRef = useRef<HTMLDivElement>(null);
+  const arrowRef = useRef<HTMLDivElement>(null);
   const enterTlRef = useRef<gsap.core.Timeline | null>(null);
   const isEnteringRef = useRef(false);
 
@@ -74,12 +76,26 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
     enterTlRef.current?.kill();
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    gsap.to(wrapRef.current, {
-      clipPath: "inset(0 0 100% 0)",
-      duration: reduceMotion ? 0 : 1.1,
-      ease: "expo.inOut",
-      onComplete: onEnter,
-    });
+    const transitionTl = gsap.timeline({ onComplete: onEnter });
+    transitionTl
+      .to(arrowRef.current, {
+        opacity: 1,
+        y: -18,
+        duration: reduceMotion ? 0 : 0.35,
+        ease: "power2.out",
+      })
+      .to(buildingRef.current, {
+        opacity: 1,
+        scale: 1.08,
+        y: 0,
+        duration: reduceMotion ? 0 : 0.8,
+        ease: "expo.out",
+      }, "-=0.25")
+      .to(wrapRef.current, {
+        clipPath: "inset(0 0 100% 0)",
+        duration: reduceMotion ? 0 : 1.1,
+        ease: "expo.inOut",
+      }, "-=0.45");
   };
 
   return (
@@ -93,6 +109,12 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
       onKeyDown={(e) => e.key === "Enter" && handleEnter()}
       aria-label="Enter MUREC Experience"
     >
+      <div ref={buildingRef} className="murec-intro__building" aria-hidden="true">
+        <Image src="/images/villa.jpg" alt="" fill sizes="100vw" priority />
+      </div>
+      <div ref={arrowRef} className="murec-intro__arrow" aria-hidden="true">
+        <Arrow down />
+      </div>
       <div ref={logoRef} className="murec-intro__logo" style={{ opacity: 0, transform: "translateY(28px)" }}>
         MUREC
       </div>

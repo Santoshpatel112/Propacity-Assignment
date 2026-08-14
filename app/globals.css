@@ -600,6 +600,44 @@ ul, ol {
   animation: intro-frame-in 2.2s 0.4s var(--ease-out-expo) forwards;
 }
 
+.murec-intro__building {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 0;
+  transform: translateY(12%) scale(1.16);
+  filter: saturate(0.45) contrast(1.1) brightness(0.42);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.murec-intro__building::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--color-void) 0%, transparent 42%, var(--color-void) 100%), linear-gradient(90deg, var(--color-void) 0%, transparent 35%, transparent 65%, var(--color-void) 100%);
+}
+
+.murec-intro__arrow {
+  position: absolute;
+  bottom: 13%;
+  left: 50%;
+  color: var(--color-gold);
+  opacity: 0.45;
+  transform: translate(-50%, 0) rotate(90deg);
+  transition: opacity 0.35s ease;
+}
+
+.murec-intro__arrow::before {
+  content: "";
+  position: absolute;
+  top: -48px;
+  left: 50%;
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(to top, var(--color-gold), transparent);
+}
+
 @keyframes intro-frame-in {
   to { transform: scale(1); opacity: 1; }
 }
@@ -665,7 +703,7 @@ ul, ol {
 
 /* ═══════════════════════════════════════════════
    HERO SECTION
-   ═══════════════════════════════════════════════ */
+   ═══════════════════════════════════��═══════════ */
 
 .murec-hero {
   position: relative;
@@ -1710,7 +1748,7 @@ ul, ol {
   }
 }
 
-/* ═══════════════════════════════════════════════
+/* ═════════════���═════════════════════════════════
    VIDEO SECTION
    ═══════════════════════════════════════════════ */
 
@@ -1996,7 +2034,7 @@ ul, ol {
 
 /* ═══════════════════════════════════════════════
    REDUCED MOTION — arrow
-   ═══════════════════════════════════════════════ */
+   ���══════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
   .anim-arrow {
