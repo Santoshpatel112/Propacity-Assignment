@@ -404,7 +404,11 @@ export default function HomePage() {
             MUREC is guided by values that shape every decision—building trust, delivering quality, practicing transparency, and embracing innovation as the foundation of everything we create.
           </p>
 
-          <div className="princ-grid grid-4col">
+          <div className="princ-grid" style={{ 
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+            gap: "2rem"
+          }}>
             {[
               { num: "01", title: "Trust", desc: "Principles have always mattered more than profit. At MUREC, every decision is rooted in honesty." },
               { num: "02", title: "Quality", desc: "In our every venture, quality has been our constant signature. We build with precision." },

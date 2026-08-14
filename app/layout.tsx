@@ -50,10 +50,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        {/* Skip to content for accessibility */}
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
+        
         <SmoothScroll>
           <CustomCursor />
           <Header />
-          <main>{children}</main>
+          <main id="main-content" role="main">
+            {children}
+          </main>
           <Footer />
         </SmoothScroll>
       </body>

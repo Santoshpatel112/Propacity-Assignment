@@ -2016,3 +2016,251 @@ button:focus-visible {
 .skip-to-content:focus {
   top: 1rem;
 }
+/* ────────────────────────────────────
+   RESPONSIVE REAL ESTATE ANIMATIONS
+   ──────────────────────────────────── */
+
+/* Base responsive grid utilities */
+.murec-grid-responsive {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.murec-grid-2col {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+}
+
+.murec-grid-3col {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+.murec-grid-4col {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+}
+
+/* Mobile-first responsive breakpoints */
+@media (max-width: 1200px) {
+  .murec-container {
+    padding-left: clamp(1rem, 3vw, 2rem);
+    padding-right: clamp(1rem, 3vw, 2rem);
+  }
+  
+  .text-display-xl {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+  }
+  
+  .text-display-lg {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  
+  .text-display-md {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .murec-section {
+    padding: clamp(3rem, 8vh, 5rem) 0;
+  }
+  
+  .murec-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .murec-grid-responsive {
+    gap: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .murec-grid-2col,
+  .murec-grid-3col,
+  .murec-grid-4col {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .text-body-lg {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .text-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+  }
+  
+  /* Mobile button adjustments */
+  .murec-btn {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.9rem;
+    min-width: 140px;
+  }
+  
+  /* Mobile spacing */
+  .murec-section--spacing-lg {
+    margin: clamp(2rem, 5vh, 4rem) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .murec-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .murec-grid-responsive {
+    gap: 2rem;
+  }
+  
+  .text-display-xl {
+    font-size: 2.25rem;
+    line-height: 1.1;
+  }
+  
+  .text-display-lg {
+    font-size: 1.875rem;
+    line-height: 1.2;
+  }
+  
+  .text-display-md {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  .murec-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+    min-width: 120px;
+  }
+  
+  /* Compact sections on mobile */
+  .murec-section {
+    padding: clamp(2rem, 6vh, 3.5rem) 0;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .property-card:hover,
+  .murec-btn:hover,
+  .hero-cta-button:hover {
+    transform: none !important;
+  }
+  
+  .magnetic-button {
+    transform: none !important;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+  .murec-section {
+    padding: 2rem 0;
+  }
+  
+  .cinematic-hero {
+    height: 100vh;
+  }
+  
+  .properties-carousel {
+    min-height: 100vh;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .parallax-element {
+    transform: none !important;
+  }
+  
+  .scroll-controlled {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .property-card {
+    border: 2px solid;
+  }
+  
+  .murec-btn {
+    border-width: 2px;
+  }
+  
+  .hero-eyebrow span {
+    border-width: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .cinematic-hero,
+  .properties-carousel,
+  .interactive-floor-plan {
+    display: none;
+  }
+  
+  .murec-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Safe area adjustments for notched devices */
+@supports (padding: max(0px)) {
+  .hero-content {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  
+  .murec-container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+/* Performance optimizations */
+.property-card,
+.carousel-slide,
+.hero-media-inner {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Focus management for accessibility */
+.property-card:focus,
+.murec-btn:focus,
+.hero-cta-button:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Skip to content for screen readers */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-gold);
+  color: var(--color-void);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 9999;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: 6px;
+}

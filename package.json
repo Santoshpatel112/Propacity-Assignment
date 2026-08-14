@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "analyze": "ANALYZE=true npm run build",
+    "export": "next build && next export",
+    "verify": "node verify-build.js",
+    "deploy-check": "npm run verify && npm run type-check && npm run build"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
