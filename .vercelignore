@@ -1,0 +1,10 @@
+# Vercel ignore file
+node_modules
+.env.local
+.next
+out
+dist
+
+# Keep Next.js files for framework detection
+!next.config.ts
+!package.json
