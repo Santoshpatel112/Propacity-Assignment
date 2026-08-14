@@ -19,7 +19,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1,
-      smoothTouch: false,
+      // smoothTouch: false, // Removed - not in current Lenis types
       touchMultiplier: 2,
       infinite: false,
     });

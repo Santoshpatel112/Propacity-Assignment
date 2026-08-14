@@ -66,9 +66,7 @@ function ArchitecturalLines() {
           <bufferGeometry>
             <bufferAttribute
               attach="attributes-position"
-              count={points1.length}
-              array={new Float32Array(points1.flatMap(p => [p.x, p.y, p.z]))}
-              itemSize={3}
+              args={[new Float32Array(points1.flatMap(p => [p.x, p.y, p.z])), 3]}
             />
           </bufferGeometry>
           <lineBasicMaterial color="#C4A265" transparent opacity={0.15} />
@@ -77,9 +75,7 @@ function ArchitecturalLines() {
           <bufferGeometry>
             <bufferAttribute
               attach="attributes-position"
-              count={points2.length}
-              array={new Float32Array(points2.flatMap(p => [p.x, p.y, p.z]))}
-              itemSize={3}
+              args={[new Float32Array(points2.flatMap(p => [p.x, p.y, p.z])), 3]}
             />
           </bufferGeometry>
           <lineBasicMaterial color="#C4A265" transparent opacity={0.15} />

@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  // swcMinify: true, // Removed - deprecated in Next.js 14+
   experimental: {
     optimizeCss: true
   },
