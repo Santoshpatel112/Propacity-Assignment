@@ -46,20 +46,37 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
   const tagRef = useRef<HTMLParagraphElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
+  const enterTlRef = useRef<gsap.core.Timeline | null>(null);
+  const isEnteringRef = useRef(false);
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 0.3 });
-    tl.fromTo(logoRef.current, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 1.4, ease: "expo.out" })
-      .fromTo(tagRef.current,  { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1, ease: "expo.out" }, "-=0.9")
-      .fromTo(btnRef.current,  { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, "-=0.6")
-      .fromTo(lineRef.current, { height: 0 }, { height: 60, duration: 1.5, ease: "expo.out" }, "-=0.4");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const tl = gsap.timeline({ delay: reduceMotion ? 0 : 0.25 });
+    enterTlRef.current = tl;
+
+    if (reduceMotion) {
+      tl.set([logoRef.current, tagRef.current, btnRef.current], { opacity: 1, y: 0 })
+        .set(lineRef.current, { height: 60 });
+    } else {
+      tl.fromTo(logoRef.current, { opacity: 0, y: 34, letterSpacing: "0.7em" }, { opacity: 1, y: 0, letterSpacing: "0.4em", duration: 1.5, ease: "expo.out" })
+        .fromTo(tagRef.current, { opacity: 0, y: 18, clipPath: "inset(0 0 100% 0)" }, { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 1, ease: "expo.out" }, "-=0.9")
+        .fromTo(btnRef.current, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.85, ease: "expo.out" }, "-=0.55")
+        .fromTo(lineRef.current, { height: 0, opacity: 0 }, { height: 60, opacity: 1, duration: 1.4, ease: "expo.out" }, "-=0.35")
+        .to(logoRef.current, { y: -3, duration: 2.4, ease: "sine.inOut", repeat: -1, yoyo: true }, "+=0.2");
+    }
+
     return () => { tl.kill(); };
   }, []);
 
   const handleEnter = () => {
+    if (isEnteringRef.current) return;
+    isEnteringRef.current = true;
+    enterTlRef.current?.kill();
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     gsap.to(wrapRef.current, {
       clipPath: "inset(0 0 100% 0)",
-      duration: 1.1,
+      duration: reduceMotion ? 0 : 1.1,
       ease: "expo.inOut",
       onComplete: onEnter,
     });

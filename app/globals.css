@@ -585,6 +585,23 @@ ul, ol {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  isolation: isolate;
+  will-change: clip-path;
+}
+
+.murec-intro::before {
+  content: "";
+  position: absolute;
+  inset: 18% 28%;
+  z-index: -1;
+  border: 1px solid rgba(196, 162, 101, 0.07);
+  transform: scale(0.9);
+  opacity: 0;
+  animation: intro-frame-in 2.2s 0.4s var(--ease-out-expo) forwards;
+}
+
+@keyframes intro-frame-in {
+  to { transform: scale(1); opacity: 1; }
 }
 
 .murec-intro__logo {
@@ -632,6 +649,18 @@ ul, ol {
   height: 0;
   background: linear-gradient(to bottom, transparent, var(--color-gold));
   transform: translateX(-50%);
+  transform-origin: top center;
+}
+
+@media (max-width: 700px) {
+  .murec-intro::before { inset: 20% 10%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .murec-intro::before { animation: none; transform: scale(1); opacity: 1; }
+  .murec-intro__logo,
+  .murec-intro__tagline,
+  .murec-intro__cta { transition: none; }
 }
 
 /* ═══════════════════════════════════════════════
@@ -1382,7 +1411,7 @@ ul, ol {
 
 /* ═══════════════════════════════════════════════
    PRINCIPLES
-   ═══════════════════════════════════════════════ */
+   ══��════════════════════════════════════════════ */
 
 .principle-block {
   position: relative;
