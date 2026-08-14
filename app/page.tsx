@@ -155,6 +155,9 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
 export default function HomePage() {
   const [entered, setEntered] = useState(false);
   const heroRef      = useRef<HTMLElement>(null);
+  const buildingSectionRef = useRef<HTMLElement>(null);
+  const buildingImageRef = useRef<HTMLDivElement>(null);
+  const buildingPaneRef = useRef<HTMLDivElement>(null);
   const legacyRef    = useRef<HTMLElement>(null);
   const principlesRef = useRef<HTMLElement>(null);
   const collectionRef = useRef<HTMLElement>(null);
@@ -202,6 +205,26 @@ export default function HomePage() {
           scrub: 1.8,
         },
       });
+
+      /* ──── ARCHITECTURAL BUILDING REVEAL ──── */
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduceMotion) {
+        gsap.fromTo(buildingImageRef.current,
+          { scale: 1.18, y: "8%" },
+          { scale: 1, y: "-4%", ease: "none",
+            scrollTrigger: { trigger: buildingSectionRef.current, start: "top bottom", end: "bottom top", scrub: 1.4 } });
+        gsap.fromTo(buildingPaneRef.current,
+          { clipPath: "inset(0 100% 0 0)" },
+          { clipPath: "inset(0 0% 0 0)", ease: "none",
+            scrollTrigger: { trigger: buildingSectionRef.current, start: "top 82%", end: "top 30%", scrub: 1 } });
+        gsap.to(".building-seam", {
+          scaleY: 1.35, yPercent: 12, ease: "none",
+          scrollTrigger: { trigger: buildingSectionRef.current, start: "top bottom", end: "bottom top", scrub: 1.2 } });
+      }
+      gsap.fromTo(".building-copy > *",
+        { opacity: 0, y: 36 },
+        { opacity: 1, y: 0, stagger: 0.1, duration: 1, ease: "expo.out",
+          scrollTrigger: { trigger: buildingSectionRef.current, start: "top 68%" } });
 
       /* ──── LEGACY SECTION ──── */
       gsap.fromTo(".legacy-label",
@@ -378,8 +401,30 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════
           REAL ESTATE MOTION ANIMATION SHOWCASE
           (Inspired by Dribbble Real Estate Motion)
-          ═══════════════════════════════════════ */}
+          ═════���═════════════════════════════════ */}
       <RealEstateMotionShowcase />
+
+      {/* ═══════════════════════════════════════
+          ARCHITECTURAL BUILDING SHOWCASE
+          ═══════════════════════════════════════ */}
+      <section ref={buildingSectionRef} className="murec-building" aria-labelledby="building-title">
+        <div className="murec-building__media">
+          <div ref={buildingImageRef} className="murec-building__image">
+            <Image src="/images/villa.jpg" alt="Contemporary luxury residence with layered architectural volumes" fill sizes="100vw" />
+          </div>
+          <div className="murec-building__shade" />
+          <div ref={buildingPaneRef} className="murec-building__pane" />
+          <div className="building-seam" />
+          <div className="murec-building__index">01 <span>/</span> 04</div>
+        </div>
+        <div className="murec-building__content building-copy">
+          <span className="text-label">The Collection</span>
+          <h2 id="building-title">Architecture<br /><em>in residence.</em></h2>
+          <p>Quiet forms, considered light, and spaces made to hold a life. Explore a collection of residences shaped by place.</p>
+          <Link href="/collection" className="murec-text-link">View the collection <Arrow /></Link>
+        </div>
+        <div className="murec-building__rail" aria-hidden="true"><span>SCROLL TO DISCOVER</span><i /></div>
+      </section>
 
       {/* ═══════════════════════════════════════
           LEGACY SECTION

@@ -909,6 +909,34 @@ ul, ol {
 }
 
 /* ═══════════════════════════════════════════════
+   ARCHITECTURAL BUILDING SHOWCASE
+   ═══════════════════════════════════════════════ */
+
+.murec-building {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--color-void);
+  display: flex;
+  align-items: center;
+  padding: 10rem var(--container-pad);
+}
+
+.murec-building__media { position: absolute; inset: 0; overflow: hidden; }
+.murec-building__image, .murec-building__image img { position: absolute; inset: 0; width: 100%; height: 108%; object-fit: cover; }
+.murec-building__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,8,10,.92), rgba(8,8,10,.5) 42%, rgba(8,8,10,.28)), linear-gradient(0deg, rgba(8,8,10,.85), transparent 48%); }
+.murec-building__pane { position: absolute; inset: 12% 10%; border: 1px solid rgba(234,229,216,.22); background: rgba(8,8,10,.08); backdrop-filter: blur(1px); }
+.building-seam { position: absolute; top: 7%; bottom: 7%; left: 54%; width: 1px; background: linear-gradient(transparent, rgba(196,162,101,.8), transparent); transform-origin: center; }
+.murec-building__content { position: relative; z-index: 2; width: min(100%, 440px); }
+.murec-building__content h2 { font-family: var(--font-display); font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: .9; letter-spacing: -.04em; margin: 1.5rem 0; color: var(--color-cream); }
+.murec-building__content h2 em { color: var(--color-gold); }
+.murec-building__content p { max-width: 360px; color: var(--color-text-secondary); line-height: 1.8; margin-bottom: 2rem; }
+.murec-building__index { position: absolute; right: 8%; top: 12%; color: var(--color-cream); font: .6rem var(--font-body); letter-spacing: .24em; }
+.murec-building__index span { color: var(--color-gold); margin: 0 .4rem; }
+.murec-building__rail { position: absolute; z-index: 2; right: var(--container-pad); bottom: 10%; display: flex; align-items: center; gap: 1rem; color: var(--color-text-secondary); font-size: .55rem; letter-spacing: .28em; writing-mode: vertical-rl; }
+.murec-building__rail i { width: 1px; height: 70px; background: linear-gradient(var(--color-gold), transparent); }
+
+/* ═══════════════════════════════════════════════
    REVEAL ANIMATIONS
    ═══════════════════════════════════════════════ */
 
@@ -1373,7 +1401,7 @@ ul, ol {
   width: 100%;
 }
 
-/* ═══════════════════════════════════════════════
+/* ══════════════════════════════════���════════════
    PARALLAX IMAGE
    ═══════════════════════════════════════════════ */
 
@@ -1800,12 +1828,23 @@ ul, ol {
   }
 }
 
-@media (max-width: 480px) {
-  .murec-hero {
-    min-height: 500px;
-  }
+@media (max-width: 768px) {
+  .murec-building { min-height: 820px; align-items: flex-end; padding-bottom: 7rem; }
+  .murec-building__pane { inset: 10% 6%; }
+  .building-seam { left: 50%; }
+  .murec-building__index { top: 12%; right: 7%; }
+  .murec-building__rail { right: 1rem; bottom: 7%; }
 }
 
+@media (max-width: 480px) {
+  .murec-hero {
+  min-height: 500px;
+  }
+  .murec-building { min-height: 760px; }
+  .murec-building__content h2 { font-size: clamp(3.2rem, 17vw, 5rem); }
+  .murec-building__pane { inset: 14% 1.25rem 22%; }
+  .murec-building__rail { display: none; }
+}
 
 /* ═══════════════════════════════════════════════
    REDUCED MOTION
