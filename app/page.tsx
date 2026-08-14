@@ -345,13 +345,21 @@ export default function HomePage() {
           }} />
         </div>
 
+        <div className="murec-hero__architecture" aria-hidden="true">
+          <span className="murec-hero__architecture-line murec-hero__architecture-line--left" />
+          <span className="murec-hero__architecture-line murec-hero__architecture-line--center" />
+          <span className="murec-hero__architecture-line murec-hero__architecture-line--right" />
+          <span className="murec-hero__estate murec-hero__estate--left">ESTATE I</span>
+          <span className="murec-hero__estate murec-hero__estate--right">ESTATE II</span>
+          <span className="murec-hero__counter">01 <i>/</i> 04</span>
+        </div>
+
         {/* Hero text content */}
         <div className="murec-hero__content" style={{ position: "relative", zIndex: 5 }}>
 
           {/* Eyebrow */}
           <div
             className="hero-eyebrow"
-            style={{ opacity: 0 }}
             aria-label="78 plus years of legacy"
           >
             <span className="murec-hero__eyebrow">78+ Years of Legacy</span>
@@ -360,10 +368,10 @@ export default function HomePage() {
           {/* Title — split into lines with overflow:hidden for the wipe effect */}
           <h1 className="murec-hero__title" style={{ overflow: "hidden" }}>
             <span className="murec-hero__title-line">
-              <span className="hero-line" style={{ display: "inline-block", opacity: 0 }}>The Legacy</span>
+              <span className="hero-line" style={{ display: "inline-block" }}>The Legacy</span>
             </span>
             <span className="murec-hero__title-line">
-              <span className="hero-line" style={{ display: "inline-block", opacity: 0 }}>
+              <span className="hero-line" style={{ display: "inline-block" }}>
                 <em>Beyond</em> Compare
               </span>
             </span>
@@ -372,7 +380,6 @@ export default function HomePage() {
           {/* Subtitle */}
           <p
             className="murec-hero__subtitle hero-sub"
-            style={{ opacity: 0 }}
           >
             For over seven decades, we stood for perseverance, integrity, and nation-building through enterprise. Every step guided by one oath: quality before profit, trust before everything.
           </p>
@@ -380,7 +387,7 @@ export default function HomePage() {
           {/* CTA Buttons */}
           <div
             className="hero-cta-wrap"
-            style={{ opacity: 0, display: "flex", gap: "1rem", flexWrap: "wrap" }}
+            style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
           >
             <Link href="/legacy" className="murec-btn murec-btn--filled">
               Our History <Arrow />
@@ -392,7 +399,7 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="murec-hero__scroll hero-scroll-hint" style={{ opacity: 0 }}>
+        <div className="murec-hero__scroll hero-scroll-hint">
           <span className="murec-hero__scroll-text">Scroll</span>
           <div className="murec-hero__scroll-line" />
         </div>
@@ -495,7 +502,7 @@ export default function HomePage() {
             <h2 className="text-display-xl">
               <span className="princ-word" style={{ display: "inline-block", opacity: 0, marginRight: "0.3em" }}>Living</span>
               <span className="princ-word" style={{ display: "inline-block", opacity: 0, marginRight: "0.3em" }}>By</span>
-              <span className="princ-word" style={{ display: "inline-block", opacity: 0 }}><em>Principles</em></span>
+              <span className="princ-word" style={{ display: "inline-block" }}><em>Principles</em></span>
             </h2>
           </div>
 

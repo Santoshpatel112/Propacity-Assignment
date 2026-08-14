@@ -773,6 +773,7 @@ ul, ol {
 
 @media (prefers-reduced-motion: reduce) {
   .murec-intro::before { animation: none; transform: scale(1); opacity: 1; }
+  .murec-hero__architecture-line { animation: none; transform: scaleY(1); }
   .murec-intro__logo,
   .murec-intro__tagline,
   .murec-intro__cta,
@@ -812,13 +813,21 @@ ul, ol {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(
-    to bottom,
-    rgba(8, 8, 10, 0.1) 0%,
-    rgba(8, 8, 10, 0.35) 45%,
-    rgba(8, 8, 10, 0.92) 100%
-  );
+  background: linear-gradient(to bottom, rgba(8, 8, 10, 0.1) 0%, rgba(8, 8, 10, 0.35) 45%, rgba(8, 8, 10, 0.92) 100%);
 }
+
+.murec-hero__architecture { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.murec-hero__architecture-line { position: absolute; top: 0; bottom: 0; width: 1px; background: linear-gradient(transparent 8%, rgba(234,229,216,.16) 32%, rgba(234,229,216,.08) 70%, transparent 94%); transform-origin: top; animation: hero-line-draw 1.8s .3s var(--ease-out-expo) both; }
+.murec-hero__architecture-line--left { left: 12%; }
+.murec-hero__architecture-line--center { left: 50%; background: linear-gradient(transparent 8%, rgba(196,162,101,.45) 42%, rgba(196,162,101,.12) 75%, transparent 94%); }
+.murec-hero__architecture-line--right { right: 12%; }
+.murec-hero__estate, .murec-hero__counter { position: absolute; top: 12%; font: .55rem var(--font-body); letter-spacing: .3em; color: var(--color-text-secondary); text-transform: uppercase; }
+.murec-hero__estate--left { left: 13%; }
+.murec-hero__estate--right { right: 13%; }
+.murec-hero__counter { right: var(--container-pad); top: auto; bottom: 12%; color: var(--color-cream); }
+.murec-hero__counter i { color: var(--color-gold); font-style: normal; margin: 0 .45rem; }
+
+@keyframes hero-line-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
 .murec-hero__content {
   position: relative;
@@ -1829,6 +1838,11 @@ ul, ol {
 }
 
 @media (max-width: 768px) {
+  .murec-hero__architecture-line--left { left: 7%; }
+  .murec-hero__architecture-line--right { right: 7%; }
+  .murec-hero__estate { top: 15%; font-size: .48rem; }
+  .murec-hero__estate--left { left: 8%; }
+  .murec-hero__estate--right { right: 8%; }
   .murec-building { min-height: 820px; align-items: flex-end; padding-bottom: 7rem; }
   .murec-building__pane { inset: 10% 6%; }
   .building-seam { left: 50%; }
@@ -1939,7 +1953,7 @@ ul, ol {
 
 /* ═══════════════════════════════════════════════
    BLOG ARTICLE
-   ═══════════════════════════════════════════════ */
+   ══════���════════════════════════════════════════ */
 
 .article-content {
   max-width: var(--container-narrow);
