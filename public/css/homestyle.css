@@ -1,0 +1,399 @@
+button.mute-unmutebtn {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    width: 40px;
+    height: 40px;
+    background: black;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    border: none;
+}
+
+.madhusudan-logo img {
+    height: 250px;
+}
+
+.madhusudan-logo {
+    margin-top: 20px;
+}
+
+
+button.mute-unmutebtn i {
+    font-size: 18px;
+    color: white;
+}
+
+.pageloader {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    z-index: 99999;
+    background-color: black;
+}
+
+.videowrapp video {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    object-fit: cover;
+}
+
+.video-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    gap: 4px;
+    /*background: hsl(0deg 0% 0% / 12%);*/
+}
+
+.video-content p {
+    color: white;
+    max-width: 640px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.video-content h1 {
+    font-size: 40px;
+    color: white;
+    max-width: 640px;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.video-content figure img {
+    height: 105px;
+}
+
+.video-content .line {
+    background: white;
+    opacity: 9;
+    height: 1px;
+    width: 100px;
+}
+
+.video-content button {
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+.banner-desc {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: hsl(0deg 0% 0% / 52%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    color: white;
+    padding-top:10vw;
+}
+
+.banner-desc p {
+   font-size: 44px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height:1;
+
+}
+.banner-desc p span {
+    font-size: 85px;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+}
+
+.banner-desc h1 {
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.banner-desc a {
+    background: hsl(0deg 0% 0% / 30%);
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 73px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    
+}
+
+.banner-desc a img {
+    height: 12px;
+    transition: 0.5s all;
+}
+
+.banner-desc a:hover {
+    background: black;
+}
+
+.banner-desc a:hover img {
+    transform: translateX(5px);
+}
+
+section.v_one {
+    height: 100vh;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+}
+
+section.v_one img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: left center;
+}
+
+section.vh-content {
+    height: 100vh;
+    margin-top: -100vh;
+    z-index: 2;
+    position: relative;
+    background: #0000007d;
+}
+
+.innercontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: white;
+    height: 100%;
+}
+
+.innercontent h2 {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+.innercontent h2 span {
+    display: block;
+    font-weight: 600;
+}
+
+.innercontent p {
+    font-size: 18px;
+    max-width: 720px;
+    text-align: center;
+}
+
+.v_one video {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.innercontent a img {
+    filter: brightness(0);
+    height: 12px;
+    transition: 0.5s all;
+}
+
+.innercontent a {
+    margin-top: 24px;
+    background: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 73px;
+    color: black;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 600;
+
+}
+
+.innercontent a:hover img {
+    transform: translateX(5px);
+}
+
+.v_two {
+    height: 100vh;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+}
+
+.v_two video {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.v_three {
+    height: 100vh;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+}
+
+.v_four {
+    height: 100vh;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.v_three video {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.v_four video {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 600px) {
+    .banner-desc p
+    {
+        font-size:20px;
+        letter-spacing:2px;
+        flex-wrap:wrap;
+        text-align:center;
+        justify-content:center;
+    }
+    .madhusudan-logo img {
+    height: 120px;
+}
+
+    .video-content h1 {
+        font-size: 34px;
+        line-height: 1.6;
+        padding: 0 16px
+    }
+
+    .video-content p {
+        font-size: 18px;
+        padding: 0 16px;
+    }
+
+    .video-content button {
+        font-size: 22px;
+    }
+
+    .video-content figure img {
+        height: 70px;
+    }
+
+    .banner-desc h1 {
+        font-size: 34px;
+    }
+
+
+
+    .innercontent h2 {
+        font-size: 34px;
+    }
+
+    .innercontent p {
+        padding: 0 16px;
+        max-width: 100%;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .testimonial-slider .slick-slide {
+        margin-right: 0px !important;
+    }
+
+    .testimonial-slider .card .figure {
+        flex: 0 0 100%;
+    }
+
+    .testimonial-slider .card .figure img {
+        height: auto;
+    }
+
+    .testimonail-slider-btn .testimonial-prev,
+    .testimonail-slider-btn .testimonial-next {
+        top: 65vw;
+    }
+
+    .testimonail-slider-btn .testimonial-prev {
+        left: 26px
+    }
+
+    .testimonail-slider-btn .testimonial-next {
+        right: 16px;
+    }
+
+    .description {
+        padding-top: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .pageloader {
+        height: 100dvh;
+    }
+
+    button.mute-unmutebtn {
+        right: 10px;
+        bottom: 20px;
+    }
+}
+
+
+.pageloader {
+    transition: opacity 0.4s ease-in-out;
+}
+
+.pageloader.hide {
+    opacity: 0;
+    pointer-events: none;
+}

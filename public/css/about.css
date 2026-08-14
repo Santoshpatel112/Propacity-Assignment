@@ -1,0 +1,403 @@
+.about-mission {
+    padding: 90px 0;
+    background-color: black;
+    color: white;
+}
+
+.about-block {
+    background: black;
+    color: white;
+    padding-top: 200px;
+    padding-bottom: 90px;
+}
+
+.about-block h1 {
+    font-size: 5.5vw;
+}
+
+.about-counter {
+    background: black;
+}
+
+.about-counter>div {
+    width: 33%;
+    height: 560px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-right: 1px solid #353535;
+}
+
+.about-mission h2,
+.about-vision h2 {
+    font-size: 12.6vw;
+    letter-spacing: 2vw;
+    position: sticky;
+    top: 280px;
+    transition: 0.5s;
+}
+
+.about-vision {
+    background: black;
+    padding-top: 90px;
+    color: white;
+    padding-bottom: 90px;
+}
+
+.the-management {
+    background: black;
+    color: white;
+    padding: 40px 0 90px;
+}
+
+.about-mission figure,
+.about-vision figure {
+    margin-bottom: 90px;
+}
+
+.about-mission p,
+.about-vision p {
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.6;
+}
+
+.the-management h3 {
+    font-size: 40px;
+    margin-bottom: 54px;
+}
+
+/*.the-management h3 span {*/
+/*    font-weight: 800;*/
+/*}*/
+
+.team-box h3 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.team-box p {
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.test-nev button {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-nev button i {
+    font-size: 40px;
+}
+
+.test-nev .team-prev.slick-arrow {
+    position: absolute;
+    top: 15vw;
+    left: -20px;
+}
+
+.testimonial-slider {
+    position: relative;
+}
+
+.test-nev .team-next.slick-arrow {
+    position: absolute;
+    top: 15vw;
+    right: 30px;
+}
+
+.team-slider .team-box {
+    margin-right: 60px;
+}
+
+.counter-block {
+    width: 280px;
+    position: relative;
+}
+
+.counter-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.counter-block figure {
+    position: relative;
+}
+
+.counter-block img {
+    width: 100%;
+    object-fit: cover;
+    height: 390px;
+}
+
+.couner-inner .bg-img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-size: cover;
+    opacity: 0;
+    transform: scale(1.2);
+    transition: 0.5s all;
+}
+
+.counter-bg-1 {
+    background-image: url(../images/counterbg1.jpg);
+}
+
+.counter-bg-2 {
+    background-image: url(../images/counterbg2.jpg);
+}
+
+.counter-bg-3 {
+    background-image: url(../images/counterbg3.jpg);
+}
+
+
+.counter-block p {
+    margin: 0;
+    color: white;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.couner-inner:hover .bg-img {
+    opacity: 9;
+    transform: scale(1);
+}
+
+.couner-inner:hover .mask {
+    opacity: 9;
+}
+
+.mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #931A00;
+    opacity: 0;
+    transition: 0.5s all;
+    mix-blend-mode: multiply;
+}
+
+.bount-box {
+    position: absolute;
+    bottom: 20px;
+    color: white;
+    font-size: 80px;
+    font-weight: 600;
+    left: 22px;
+    opacity: 0;
+    transition: 0.1s all;
+}
+
+.couner-inner:hover .bount-box {
+    opacity: 9;
+}
+
+.collection-bg-1 {
+    background-image: url(../images/cl1.jpg);
+}
+
+.collection-bg-2 {
+    background-image: url(../images/cl2.jpg);
+}
+
+.collection-bg-3 {
+    background-image: url(../images/cl3.jpg);
+}
+
+.collection-counter h2 {
+    color: white;
+    font-size: 22px;
+    padding-left: 20px;
+    margin-bottom: 13px;
+}
+
+.miuriclogo {
+    position: absolute;
+    left: 0;
+    bottom: 140px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.4s all;
+}
+
+
+.miuriclogo img {
+    height: 100px;
+    width: auto;
+}
+
+.collection-counter .couner-inner.stats:hover .miuriclogo {
+    opacity: 9;
+}
+
+.collection-counter {
+    padding-top: 130px;
+    padding-bottom: 100px;
+    width: 100%;
+    background-color: black;
+}
+
+.collection-counter .couner-inner::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgb(0 0 0) 0%, rgb(255 255 255 / 0%) 100%);
+    z-index: 1;
+}
+
+.collection-counter .couner-inner {
+    width: 478px;
+    flex: 0 0 478px;
+
+}
+
+.collection-block {
+    width: 100%;
+    background-color: black;
+}
+
+.team-slider .team-box figure {
+    overflow: hidden;
+}
+
+.team-slider .team-box figure img {
+    transform: scale(1.01);
+}
+
+
+
+@media (max-width: 600px) {
+    .about-block
+    {
+        padding-top:170px;
+    }
+    .the-management h3 {
+        font-size: 34px;
+    }
+
+    .about-mission figure,
+    .about-vision figure {
+        margin-bottom: 40px;
+    }
+
+    .the-management {
+        padding-top: 0;
+        padding-bottom: 40px;
+    }
+
+    .about-mission figure img {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .about-vision figure img {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .about-block h1 {
+        font-size: 34px;
+        line-height: 1.5;
+    }
+
+    .counter-block p {
+        font-size: 24px;
+    }
+
+    .about-counter {
+        flex-direction: column;
+    }
+
+    .about-counter>div {
+        width: 100%;
+    }
+
+    .counter-block p {
+        text-align: center;
+    }
+
+    .about-mission {
+        padding-bottom: 0;
+    }
+
+    .team-slider .team-box {
+        margin-right: 0;
+    }
+
+    .test-nev .team-prev.slick-arrow {
+        left: 10px;
+        top: 60vw;
+    }
+
+    .test-nev button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .test-nev .team-next.slick-arrow {
+        top: 60vw;
+        right: 20px;
+    }
+
+    .about-mission h2,
+    .about-vision h2 {
+        font-size: 17vw;
+    }
+
+    .collection-counter.d-flex {
+        flex-direction: row;
+    }
+
+    .collection-counter .couner-inner {
+        width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .collection-counter h2 {
+        padding-left: 0;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .couner-inner .mask {
+        opacity: 9;
+    }
+
+    .couner-inner .bg-img {
+        opacity: 9;
+    }
+
+    .bount-box {
+        opacity: 9;
+    }
+}
