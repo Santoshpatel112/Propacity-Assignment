@@ -47,6 +47,8 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const buildingRef = useRef<HTMLDivElement>(null);
+  const panelLeftRef = useRef<HTMLDivElement>(null);
+  const panelRightRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
   const enterTlRef = useRef<gsap.core.Timeline | null>(null);
   const isEnteringRef = useRef(false);
@@ -61,6 +63,7 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
         .set(lineRef.current, { height: 60 });
     } else {
       tl.fromTo(buildingRef.current, { opacity: 0, y: "12%", scale: 1.16 }, { opacity: 0.24, y: 0, scale: 1, duration: 2.2, ease: "expo.out" })
+        .fromTo([panelLeftRef.current, panelRightRef.current], { clipPath: "inset(0 50% 0 50%)" }, { clipPath: "inset(0 0% 0 0%)", duration: 1.6, ease: "expo.inOut", stagger: 0.08 }, "-=1.8")
         .fromTo(arrowRef.current, { opacity: 0, y: 12 }, { opacity: 0.8, y: 0, duration: 0.8, ease: "expo.out" }, "-=1.5")
         .fromTo(logoRef.current, { opacity: 0, y: 34, letterSpacing: "0.7em" }, { opacity: 1, y: 0, letterSpacing: "0.4em", duration: 1.5, ease: "expo.out" }, "-=1.1")
         .fromTo(tagRef.current, { opacity: 0, y: 18, clipPath: "inset(0 0 100% 0)" }, { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 1, ease: "expo.out" }, "-=0.9")
@@ -114,6 +117,16 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
       <div ref={buildingRef} className="murec-intro__building" aria-hidden="true">
         <Image src="/images/villa.jpg" alt="" fill sizes="100vw" priority />
       </div>
+      <div className="murec-intro__panels" aria-hidden="true">
+        <div ref={panelLeftRef} className="murec-intro__panel murec-intro__panel--left">
+          <Image src="/images/villa.jpg" alt="" fill sizes="50vw" priority />
+          <span>ESTATE I</span>
+        </div>
+        <div ref={panelRightRef} className="murec-intro__panel murec-intro__panel--right">
+          <Image src="/images/villa.jpg" alt="" fill sizes="50vw" priority />
+          <span>ESTATE II</span>
+        </div>
+      </div>
       <div ref={arrowRef} className="murec-intro__arrow" aria-hidden="true">
         <Arrow down />
       </div>
@@ -142,6 +155,9 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
 export default function HomePage() {
   const [entered, setEntered] = useState(false);
   const heroRef      = useRef<HTMLElement>(null);
+  const buildingSectionRef = useRef<HTMLElement>(null);
+  const buildingImageRef = useRef<HTMLDivElement>(null);
+  const buildingPaneRef = useRef<HTMLDivElement>(null);
   const legacyRef    = useRef<HTMLElement>(null);
   const principlesRef = useRef<HTMLElement>(null);
   const collectionRef = useRef<HTMLElement>(null);
@@ -189,6 +205,26 @@ export default function HomePage() {
           scrub: 1.8,
         },
       });
+
+      /* ──── ARCHITECTURAL BUILDING REVEAL ──── */
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduceMotion) {
+        gsap.fromTo(buildingImageRef.current,
+          { scale: 1.18, y: "8%" },
+          { scale: 1, y: "-4%", ease: "none",
+            scrollTrigger: { trigger: buildingSectionRef.current, start: "top bottom", end: "bottom top", scrub: 1.4 } });
+        gsap.fromTo(buildingPaneRef.current,
+          { clipPath: "inset(0 100% 0 0)" },
+          { clipPath: "inset(0 0% 0 0)", ease: "none",
+            scrollTrigger: { trigger: buildingSectionRef.current, start: "top 82%", end: "top 30%", scrub: 1 } });
+        gsap.to(".building-seam", {
+          scaleY: 1.35, yPercent: 12, ease: "none",
+          scrollTrigger: { trigger: buildingSectionRef.current, start: "top bottom", end: "bottom top", scrub: 1.2 } });
+      }
+      gsap.fromTo(".building-copy > *",
+        { opacity: 0, y: 36 },
+        { opacity: 1, y: 0, stagger: 0.1, duration: 1, ease: "expo.out",
+          scrollTrigger: { trigger: buildingSectionRef.current, start: "top 68%" } });
 
       /* ──── LEGACY SECTION ──── */
       gsap.fromTo(".legacy-label",
@@ -309,13 +345,21 @@ export default function HomePage() {
           }} />
         </div>
 
+        <div className="murec-hero__architecture" aria-hidden="true">
+          <span className="murec-hero__architecture-line murec-hero__architecture-line--left" />
+          <span className="murec-hero__architecture-line murec-hero__architecture-line--center" />
+          <span className="murec-hero__architecture-line murec-hero__architecture-line--right" />
+          <span className="murec-hero__estate murec-hero__estate--left">ESTATE I</span>
+          <span className="murec-hero__estate murec-hero__estate--right">ESTATE II</span>
+          <span className="murec-hero__counter">01 <i>/</i> 04</span>
+        </div>
+
         {/* Hero text content */}
         <div className="murec-hero__content" style={{ position: "relative", zIndex: 5 }}>
 
           {/* Eyebrow */}
           <div
             className="hero-eyebrow"
-            style={{ opacity: 0 }}
             aria-label="78 plus years of legacy"
           >
             <span className="murec-hero__eyebrow">78+ Years of Legacy</span>
@@ -324,10 +368,10 @@ export default function HomePage() {
           {/* Title — split into lines with overflow:hidden for the wipe effect */}
           <h1 className="murec-hero__title" style={{ overflow: "hidden" }}>
             <span className="murec-hero__title-line">
-              <span className="hero-line" style={{ display: "inline-block", opacity: 0 }}>The Legacy</span>
+              <span className="hero-line" style={{ display: "inline-block" }}>The Legacy</span>
             </span>
             <span className="murec-hero__title-line">
-              <span className="hero-line" style={{ display: "inline-block", opacity: 0 }}>
+              <span className="hero-line" style={{ display: "inline-block" }}>
                 <em>Beyond</em> Compare
               </span>
             </span>
@@ -336,7 +380,6 @@ export default function HomePage() {
           {/* Subtitle */}
           <p
             className="murec-hero__subtitle hero-sub"
-            style={{ opacity: 0 }}
           >
             For over seven decades, we stood for perseverance, integrity, and nation-building through enterprise. Every step guided by one oath: quality before profit, trust before everything.
           </p>
@@ -344,7 +387,7 @@ export default function HomePage() {
           {/* CTA Buttons */}
           <div
             className="hero-cta-wrap"
-            style={{ opacity: 0, display: "flex", gap: "1rem", flexWrap: "wrap" }}
+            style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
           >
             <Link href="/legacy" className="murec-btn murec-btn--filled">
               Our History <Arrow />
@@ -356,7 +399,7 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="murec-hero__scroll hero-scroll-hint" style={{ opacity: 0 }}>
+        <div className="murec-hero__scroll hero-scroll-hint">
           <span className="murec-hero__scroll-text">Scroll</span>
           <div className="murec-hero__scroll-line" />
         </div>
@@ -365,8 +408,30 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════
           REAL ESTATE MOTION ANIMATION SHOWCASE
           (Inspired by Dribbble Real Estate Motion)
-          ═══════════════════════════════════════ */}
+          ═════���═════════════════════════════════ */}
       <RealEstateMotionShowcase />
+
+      {/* ═══════════════════════════════════════
+          ARCHITECTURAL BUILDING SHOWCASE
+          ═══════════════════════════════════════ */}
+      <section ref={buildingSectionRef} className="murec-building" aria-labelledby="building-title">
+        <div className="murec-building__media">
+          <div ref={buildingImageRef} className="murec-building__image">
+            <Image src="/images/villa.jpg" alt="Contemporary luxury residence with layered architectural volumes" fill sizes="100vw" />
+          </div>
+          <div className="murec-building__shade" />
+          <div ref={buildingPaneRef} className="murec-building__pane" />
+          <div className="building-seam" />
+          <div className="murec-building__index">01 <span>/</span> 04</div>
+        </div>
+        <div className="murec-building__content building-copy">
+          <span className="text-label">The Collection</span>
+          <h2 id="building-title">Architecture<br /><em>in residence.</em></h2>
+          <p>Quiet forms, considered light, and spaces made to hold a life. Explore a collection of residences shaped by place.</p>
+          <Link href="/collection" className="murec-text-link">View the collection <Arrow /></Link>
+        </div>
+        <div className="murec-building__rail" aria-hidden="true"><span>SCROLL TO DISCOVER</span><i /></div>
+      </section>
 
       {/* ═══════════════════════════════════════
           LEGACY SECTION
@@ -437,7 +502,7 @@ export default function HomePage() {
             <h2 className="text-display-xl">
               <span className="princ-word" style={{ display: "inline-block", opacity: 0, marginRight: "0.3em" }}>Living</span>
               <span className="princ-word" style={{ display: "inline-block", opacity: 0, marginRight: "0.3em" }}>By</span>
-              <span className="princ-word" style={{ display: "inline-block", opacity: 0 }}><em>Principles</em></span>
+              <span className="princ-word" style={{ display: "inline-block" }}><em>Principles</em></span>
             </h2>
           </div>
 
