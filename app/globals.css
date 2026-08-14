@@ -585,6 +585,67 @@ ul, ol {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  isolation: isolate;
+  will-change: clip-path;
+}
+
+.murec-intro::before {
+  content: "";
+  position: absolute;
+  inset: 18% 28%;
+  z-index: -1;
+  border: 1px solid rgba(196, 162, 101, 0.07);
+  transform: scale(0.9);
+  opacity: 0;
+  animation: intro-frame-in 2.2s 0.4s var(--ease-out-expo) forwards;
+}
+
+.murec-intro__building {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 0;
+  transform: translateY(12%) scale(1.16);
+  filter: saturate(0.45) contrast(1.1) brightness(0.42);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.murec-intro__building::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--color-void) 0%, transparent 42%, var(--color-void) 100%), linear-gradient(90deg, var(--color-void) 0%, transparent 35%, transparent 65%, var(--color-void) 100%);
+}
+
+.murec-intro__arrow {
+  position: absolute;
+  bottom: 13%;
+  left: 50%;
+  color: var(--color-gold);
+  opacity: 0.45;
+  transform: translate(-50%, 0) rotate(90deg);
+  transition: opacity 0.35s ease;
+  animation: intro-arrow-pulse 2.4s 2.2s ease-in-out infinite;
+}
+
+.murec-intro__arrow::before {
+  content: "";
+  position: absolute;
+  top: -48px;
+  left: 50%;
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(to top, var(--color-gold), transparent);
+}
+
+@keyframes intro-frame-in {
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes intro-arrow-pulse {
+  0%, 100% { transform: translate(-50%, 0) rotate(90deg); opacity: 0.55; }
+  50% { transform: translate(-50%, 10px) rotate(90deg); opacity: 1; }
 }
 
 .murec-intro__logo {
@@ -632,11 +693,25 @@ ul, ol {
   height: 0;
   background: linear-gradient(to bottom, transparent, var(--color-gold));
   transform: translateX(-50%);
+  transform-origin: top center;
+}
+
+@media (max-width: 700px) {
+  .murec-intro::before { inset: 20% 10%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .murec-intro::before { animation: none; transform: scale(1); opacity: 1; }
+  .murec-intro__logo,
+  .murec-intro__tagline,
+  .murec-intro__cta,
+  .murec-intro__arrow { transition: none; animation: none; }
+  .murec-intro__building { opacity: 0.24; transform: none; }
 }
 
 /* ═══════════════════════════════════════════════
    HERO SECTION
-   ═══════════════════════════════════════════════ */
+   ═══════════════════════════════════��═══════════ */
 
 .murec-hero {
   position: relative;
@@ -1309,7 +1384,7 @@ ul, ol {
   color: var(--color-gold);
 }
 
-/* ═══════════════════════════════════════════════
+/* ═════════════════════════════���═════════════════
    CONTACT CTA
    ═══════════════════════════════════════════════ */
 
@@ -1382,7 +1457,7 @@ ul, ol {
 
 /* ═══════════════════════════════════════════════
    PRINCIPLES
-   ═══════════════════════════════════════════════ */
+   ══��════════════════════════════════════════════ */
 
 .principle-block {
   position: relative;
@@ -1681,7 +1756,7 @@ ul, ol {
   }
 }
 
-/* ═══════════════════════════════════════════════
+/* ═════════════���═════════════════════════════════
    VIDEO SECTION
    ═══════════════════════════════════════════════ */
 
@@ -1967,7 +2042,7 @@ ul, ol {
 
 /* ═══════════════════════════════════════════════
    REDUCED MOTION — arrow
-   ═══════════════════════════════════════════════ */
+   ���══════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
   .anim-arrow {
