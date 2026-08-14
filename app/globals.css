@@ -626,6 +626,7 @@ ul, ol {
   opacity: 0.45;
   transform: translate(-50%, 0) rotate(90deg);
   transition: opacity 0.35s ease;
+  animation: intro-arrow-pulse 2.4s 2.2s ease-in-out infinite;
 }
 
 .murec-intro__arrow::before {
@@ -640,6 +641,11 @@ ul, ol {
 
 @keyframes intro-frame-in {
   to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes intro-arrow-pulse {
+  0%, 100% { transform: translate(-50%, 0) rotate(90deg); opacity: 0.55; }
+  50% { transform: translate(-50%, 10px) rotate(90deg); opacity: 1; }
 }
 
 .murec-intro__logo {
@@ -698,7 +704,9 @@ ul, ol {
   .murec-intro::before { animation: none; transform: scale(1); opacity: 1; }
   .murec-intro__logo,
   .murec-intro__tagline,
-  .murec-intro__cta { transition: none; }
+  .murec-intro__cta,
+  .murec-intro__arrow { transition: none; animation: none; }
+  .murec-intro__building { opacity: 0.24; transform: none; }
 }
 
 /* ═══════════════════════════════════════════════
@@ -1376,7 +1384,7 @@ ul, ol {
   color: var(--color-gold);
 }
 
-/* ═══════════════════════════════════════════════
+/* ═════════════════════════════���═════════════════
    CONTACT CTA
    ═══════════════════════════════════════════════ */
 

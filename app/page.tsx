@@ -60,7 +60,9 @@ function CinematicIntro({ onEnter }: { onEnter: () => void }) {
       tl.set([logoRef.current, tagRef.current, btnRef.current], { opacity: 1, y: 0 })
         .set(lineRef.current, { height: 60 });
     } else {
-      tl.fromTo(logoRef.current, { opacity: 0, y: 34, letterSpacing: "0.7em" }, { opacity: 1, y: 0, letterSpacing: "0.4em", duration: 1.5, ease: "expo.out" })
+      tl.fromTo(buildingRef.current, { opacity: 0, y: "12%", scale: 1.16 }, { opacity: 0.24, y: 0, scale: 1, duration: 2.2, ease: "expo.out" })
+        .fromTo(arrowRef.current, { opacity: 0, y: 12 }, { opacity: 0.8, y: 0, duration: 0.8, ease: "expo.out" }, "-=1.5")
+        .fromTo(logoRef.current, { opacity: 0, y: 34, letterSpacing: "0.7em" }, { opacity: 1, y: 0, letterSpacing: "0.4em", duration: 1.5, ease: "expo.out" }, "-=1.1")
         .fromTo(tagRef.current, { opacity: 0, y: 18, clipPath: "inset(0 0 100% 0)" }, { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 1, ease: "expo.out" }, "-=0.9")
         .fromTo(btnRef.current, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.85, ease: "expo.out" }, "-=0.55")
         .fromTo(lineRef.current, { height: 0, opacity: 0 }, { height: 60, opacity: 1, duration: 1.4, ease: "expo.out" }, "-=0.35")
