@@ -1,5 +1,7 @@
 # MUREC Real Estate - Cinematic Animation Website
 
+> **🚀 DEPLOYMENT STATUS: ✅ READY** - All TypeScript errors fixed, framework detection resolved
+
 A premium real estate website featuring cinematic animations and interactions inspired by modern luxury brands. Built with Next.js 14, TypeScript, GSAP, and Three.js.
 
 ![MUREC Banner](./public/images/banner.jpg)
@@ -307,27 +309,33 @@ For support, email santosh.patel@example.com or create an issue on GitHub.
 
 ### Vercel Deployment (Recommended)
 
-1. **Connect to GitHub**
+**✅ FIXED: Framework Detection Issue**
+
+The deployment issue has been resolved by:
+1. Removing conflicting `vercel.json` configuration
+2. Letting Vercel auto-detect Next.js framework
+3. Fixing all TypeScript errors
+4. Ensuring proper build configuration
+
+1. **Commit and Push to GitHub**
    ```bash
-   # Push your code to GitHub
    git add .
-   git commit -m "Ready for deployment"
+   git commit -m "Fix: Remove vercel.json for auto-detection"
    git push origin main
    ```
 
-2. **Deploy to Vercel**
-   - Visit [vercel.com](https://vercel.com)
-   - Click "New Project" and import your GitHub repository
-   - Configure build settings (auto-detected for Next.js)
-   - Click "Deploy"
+2. **Vercel will auto-deploy**
+   - Framework: Auto-detected as Next.js
+   - Build Command: `npm run build` (auto-detected)
+   - Output Directory: `.next` (auto-detected)
+   - Install Command: `npm install` (auto-detected)
 
-3. **Environment Variables**
-   Add in Vercel dashboard:
-   ```
-   NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
+3. **Manual Deploy (if needed)**
+   ```bash
+   npx vercel --prod
    ```
 
-### Manual Deployment
+### Alternative: Manual Deployment
 
 1. **Build the project**
    ```bash

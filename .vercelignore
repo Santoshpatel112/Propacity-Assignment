@@ -1,10 +1,6 @@
-# Vercel ignore file
+# Vercel ignore file - minimal config
 node_modules
 .env.local
 .next
 out
 dist
-
-# Keep Next.js files for framework detection
-!next.config.ts
-!package.json
